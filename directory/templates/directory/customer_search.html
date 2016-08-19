@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html lang="en">
+
+<body>
+	{% if results.count < 1 %}
+		<i>No matches found</i>
+	{% else %}
+		{{ results.count }} possible match{% if results.count > 1 %}es{% endif %} found:
+		<p></p>
+		{% for result in results %}
+		<a href="{{ result.get_absolute_url }}">&lt{{ result.customer_name }}&gt </a>
+		<br>
+		<% endfor %>
+	<% endif %>
+</body>
+</html>

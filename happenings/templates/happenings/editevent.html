@@ -1,0 +1,166 @@
+<head>
+	<title>Edit Delivery</title>
+	<script type="text/javascript">
+		function goBack()
+		{
+			location.href = '{% url "calendar:detail" pk=pk %}';
+		}
+	</script>
+</head>
+<style>
+	h1.visible
+	{
+		visibility: visible
+	}
+
+	.hidden
+	{
+		visibility: hidden
+	}
+</style>
+
+	
+<h1>Edit Event</h1>
+<form action="{% url 'calendar:editevent' pk=pk %}" method="post">
+	{% csrf_token %}
+	{{ form.non_field_errors }}
+	<br>
+
+	{{ form.title.errors }}
+	Customer:
+	{{ form.title }}
+
+	<h2>Delivery Description</h2>
+	<hr>
+
+	{{ form.sales_order.errors }}
+	{{ form.sales_order.label_tag }}
+	{{ form.sales_order }}
+	<br>
+	<br>			
+	
+	{{ form.pick.errors }}
+	{{ form.pick.label_tag }}
+	{{ form.pick }}
+	<br>
+	<br>	
+				
+	{{ form.weight.errors }}
+	{{ form.weight.label_tag }}
+	{{ form.weight }}
+	<br>
+	<br>
+
+	{{ form.pallet.errors }}
+	{{ form.pallet.label_tag }}
+	{{ form.pallet }}
+	<br>
+	<br>
+	
+	{{ form.driver.errors }}	
+	{{ form.driver.label_tag }}
+	{{ form.driver }}
+
+	<div class="hidden">
+	{{ form.start_date }}
+	{{ form.end_date }}
+	</div>
+		
+	
+	<h2>Time and Date</h2>
+	<hr>
+	<table class="formTable"<tbody>
+	{{ form.start_onlytime.errors }}
+		<tr>
+			<td>{{ form.start_onlytime.label_tag }}</td>
+			<td>{{ form.start_onlytime }}</td>
+		</tr>
+		{{ form.end_onlytime.errors }}
+		<tr>
+			<td>{{ form.end_onlytime.label_tag }}</td>
+			<td>{{ form.end_onlytime }}</td>
+		</tr>
+		{{ form.start_onlydate.errors }}
+		<tr>
+			<td>{{ form.start_onlydate.label_tag }}</td>
+			<td>{{ form.start_onlydate }}</td>
+		</tr>
+		{{ form.end_onlydate.errors }}
+		<tr>
+			<td>{{ form.end_onlydate.label_tag }}</td>
+			<td>{{ form.end_onlydate }}</td>
+		</tr>
+	</tbody></table>
+	
+		<!--
+		<h2>Time and Date</h2>
+		<hr>
+		<p></p>
+			
+		{{ form.start_onlytime.errors }}
+		{{ form.start_onlytime.label_tag }}
+		{{ form.start_onlytime }}
+		<br>	
+
+		{{ form.end_onlytime.errors }}
+		{{ form.end_onlytime.label_tag }}
+		{{ form.end_onlytime }}
+		<br>		
+
+		{{ form.start_onlydate.errors }}
+		{{ form.start_onlydate.label_tag }}
+		{{ form.start_onlydate }}
+		<br>		
+
+		{{ form.end_onlydate.errors }}
+		{{ form.end_onlydate.label_tag }}
+		{{ form.end_onlydate }}
+		-->
+				
+	<h2>Customer Info</h2>
+	<hr>
+		
+	{{ form.phone.errors }}
+	{{ form.phone.label_tag }}
+	{{ form.phone }}
+	<br>
+	<br>
+
+	{{ form.address_1.errors }}
+	{{ form.address_1.label_tag }}
+	{{ form.address_1 }}
+	<br>
+	<br>
+		
+	{{ form.address_2.errors }}
+	{{ form.address_2.label_tag }}
+	{{ form.address_2 }}
+	<br>
+	<br>
+		
+	{{ form.city.errors }}
+	{{ form.city.label_tag }}
+	{{ form.city }}
+	<br>
+	<br>
+	
+	{{ form.state.errors }}
+	{{ form.state.label_tag }}
+	{{ form.state }}
+	<br>
+	<br>
+			
+	{{ form.zipcode.errors }}
+	{{ form.zipcode.label_tag }}
+	{{ form.zipcode }}	
+		
+	<h2>Additional Info</h2>
+	<hr>
+	{{ form.description.errors }}
+	{{ form.description }}
+	<br>
+	<br>
+
+	<input type="submit" value="Submit" />
+	<button type='button' onClick='goBack();'>Cancel</button>
+</form>			

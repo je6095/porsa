@@ -1,0 +1,64 @@
+{% extends 'happenings/middle.html' %}
+
+{% load staticfiles i18n %}
+
+
+
+{% block content %}
+
+
+	<script type="text/javascript">
+		function myEditEvent()
+		{
+			location.href = "/calendar/editevent/{{event.id}}/";
+		}
+		
+		function myDeleteEvent()
+		{
+			location.href = "/calendar/event/{{event.pk}}/delete/";
+		}
+	
+		function goBack()
+		{
+			location.href = "{% url "calendar:month_shift" %}";
+		}
+	</script>
+
+	<button type = "button" onClick = "goBack()"> Back to Calendar </button>
+
+	<h1>{{ event.title }}</h1>
+
+	
+
+	{% if event.start_date %}<p><b>Start Date: </b>{{ event.start_date }}</p>{% endif %}
+
+	{% if event.end_date %}<p><b>End Date: </b>{{ event.end_date }}</p>{% endif %}
+
+	{% if event.sales_order %}<p><b>Sales Order: </b>{{ event.sales_order }}</p>{% endif %}
+
+	{% if event.pick %}<p><b>Pick #: </b>{{ event.pick }}</p>{% endif %}
+
+	{% if event.weight %}<p><b>Weight: </b>{{ event.weight }} lbs</p> {% endif %}
+
+	{% if event.pallet %}<p><b>Pallet Count: </b>{{ event.pallet }}</p>{% endif %}
+
+	{% if event.driver %}<p><b>Driver: </b> {{ event.driver }}</p>{% endif %}
+
+	{% if event.phone %}<p><b>Phone: </b>{{ event.phone }}</p>{% endif %}
+	
+	{% if event.address_1 %}<p><b>Address 1: </b>{{ event.address_1 }}</p>{% endif %}
+
+	{% if event.address_2 %}<p><b>Address 2 : </b>{{ event.address_2 }}</p>{% endif %}
+
+	{% if event.city %}<p><b>City: </b>{{ event.city }}</p>{% endif %}
+
+	{% if event.state %}<p><b>State/Province: </b>{{ event.state }}</p>{% endif %}
+	
+	{% if event.zipcode %}<p><b>Zip: </b>{{ event.zipcode }}</p>{% endif %}
+
+	{% if event.description %}<p><b>Description</b>: {{ event.description }}</p>{% endif %}	
+
+	<button type='button' onClick='myEditEvent();'> Edit Event </button>        
+	<button type='button' onClick='myDeleteEvent();'> Cancel Delivery </button>	
+
+{% endblock content %}
